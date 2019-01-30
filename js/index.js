@@ -73,6 +73,22 @@ addDataToElement(anchors, anchorData);
 // Updating nav link color
 anchors.forEach(anchor => anchor.style.color = "green");
 
+// Adding new anchor tags
+for(let i = 0; i < 2; i++) {
+    const newAnchor = document.createElement('a');
+    const nav = document.querySelector('nav');
+
+    newAnchor.style.color = "green";
+    newAnchor.id = `new-anchor-${i}`;
+    newAnchor.href = '#';
+    newAnchor.text = `New Anchor ${i}`;
+
+    if (i == 0)
+        nav.appendChild(newAnchor);
+    else
+        nav.prepend(newAnchor);
+}
+
 
 // Adding cta section
 const ctaH1 = document.querySelector('h1');
