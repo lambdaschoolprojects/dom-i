@@ -43,11 +43,12 @@ const addDataToElement = (elements, data) => {
     console.log("elements", elements, "data", data);
     for (let i = 0; i < elements.length; i++) {
         const elm = elements[i];
-        const curData = data[i];
-        console.log(data[i]);
+        const curData = data[i] || ["", ""];
+        //console.log(data[i]);
 
         elm.id = curData[0];
         elm.text = curData[1];
+        elm.textContent = curData[1];
     }
 }
 
@@ -76,6 +77,7 @@ const anchorData =
 // }
 //console.log("anchors", anchors);
 addDataToElement(anchors, anchorData);
+console.log(anchors);
 
 // Adding cta section
 const ctaH1 = document.querySelector('h1');
