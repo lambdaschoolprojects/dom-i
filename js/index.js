@@ -70,6 +70,9 @@ const anchorData =
 
 addDataToElement(anchors, anchorData);
 
+// Updating nav link color
+anchors.forEach(anchor => anchor.style.color = "green");
+
 
 // Adding cta section
 const ctaH1 = document.querySelector('h1');
