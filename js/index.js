@@ -61,3 +61,10 @@ for(let i = 0; i < anchors.length; i++) {
     anchor.className = anchorData[i][0];
     anchor.text = anchorData[i][1];
 }
+
+// Adding cta section
+const ctaH1 = document.querySelector('h1');
+const ctaButton = document.querySelector('button');
+
+ctaH1.textContent = siteContent.cta.h1;
+ctaButton.textContent = siteContent.cta.button;
