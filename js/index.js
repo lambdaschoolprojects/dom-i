@@ -102,3 +102,8 @@ const contactFields = document.querySelector('.contact').children;
 const contactData = Object.entries(siteContent.contact);
 
 addDataToElement(contactFields, contactData);
+
+const footerFields = document.querySelector('footer').children;
+const footerData = Object.entries(siteContent.footer);
+
+addDataToElement(footerFields, footerData);
