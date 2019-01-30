@@ -38,6 +38,19 @@ const siteContent = {
   },
 };
 
+// helper function for adding content to tags
+const addDataToElement = (elements, data) => {
+    console.log("elements", elements, "data", data);
+    for (let i = 0; i < elements.length; i++) {
+        const elm = elements[i];
+        const curData = data[i];
+        console.log(data[i]);
+
+        elm.id = curData[0];
+        elm.text = curData[1];
+    }
+}
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
@@ -55,12 +68,14 @@ const anchorData =
     Object.entries(siteContent.nav)
     .filter(item => item[0].match(/nav/));
 
-for(let i = 0; i < anchors.length; i++) {
-    const anchor = anchors[i];
-    anchor.href = '#';
-    anchor.className = anchorData[i][0];
-    anchor.text = anchorData[i][1];
-}
+// for(let i = 0; i < anchors.length; i++) {
+//     const anchor = anchors[i];
+//     anchor.href = '#';
+//     anchor.id = anchorData[i][0];
+//     anchor.text = anchorData[i][1];
+// }
+//console.log("anchors", anchors);
+addDataToElement(anchors, anchorData);
 
 // Adding cta section
 const ctaH1 = document.querySelector('h1');
@@ -68,3 +83,18 @@ const ctaButton = document.querySelector('button');
 
 ctaH1.textContent = siteContent.cta.h1;
 ctaButton.textContent = siteContent.cta.button;
+
+// Adding main content - top content
+const mainContentH4 = document.querySelectorAll('h4');
+
+console.log("mch4", mainContentH4);
+
+const mainContentH4Data =
+    Object.entries(siteContent["main-content"])
+    .filter(item => item[0].match(/h4/));
+
+//console.log(mainContentH4Data)
+
+addDataToElement(mainContentH4, mainContentH4Data);
+
+
