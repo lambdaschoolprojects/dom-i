@@ -42,8 +42,22 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+// Adding images
 const middleImage = document.querySelector('#middle-img');
 const ctaImage = document.querySelector('#cta-img');
 
 middleImage.src = siteContent["main-content"]["middle-img-src"];
 ctaImage.src = siteContent.cta["img-src"];
+
+// Adding nav
+const anchors = document.querySelectorAll('a');
+const anchorData =
+    Object.entries(siteContent.nav)
+    .filter(item => item[0].match(/nav/));
+
+for(let i = 0; i < anchors.length; i++) {
+    const anchor = anchors[i];
+    anchor.href = '#';
+    anchor.className = anchorData[i][0];
+    anchor.text = anchorData[i][1];
+}
