@@ -97,3 +97,8 @@ const mainContentContentData =
 addDataToElement(mainContentContent, mainContentContentData);
 
 
+// Adding contact section
+const contactFields = document.querySelector('.contact').children;
+const contactData = Object.entries(siteContent.contact);
+
+addDataToElement(contactFields, contactData);
