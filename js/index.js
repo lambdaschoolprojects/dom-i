@@ -95,6 +95,7 @@ const ctaH1 = document.querySelector('h1');
 const ctaButton = document.querySelector('button');
 
 ctaH1.textContent = siteContent.cta.h1;
+ctaH1.style.wordSpacing = '500px';
 ctaButton.textContent = siteContent.cta.button;
 
 
