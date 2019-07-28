@@ -1,3 +1,4 @@
+
 const siteContent = {
   "nav": {
     "nav-item-1": "Services",
@@ -37,6 +38,92 @@ const siteContent = {
   },
 };
 
+// helper function for adding content to tags
+const addDataToElement = (elements, data) => {
+    for (let i = 0; i < elements.length; i++) {
+        const elm = elements[i];
+        const curData = data[i] || ["", ""];
+
+        elm.id = curData[0];
+        elm.text = curData[1];         // cover all
+        elm.textContent = curData[1];  // bases
+    }
+}
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+// Adding images
+const middleImage = document.querySelector('#middle-img');
+const ctaImage = document.querySelector('#cta-img');
+
+middleImage.src = siteContent["main-content"]["middle-img-src"];
+ctaImage.src = siteContent.cta["img-src"];
+
+
+// Adding nav
+const anchors = document.querySelectorAll('a');
+const anchorData =
+    Object.entries(siteContent.nav)
+    .filter(item => item[0].match(/nav/));
+
+addDataToElement(anchors, anchorData);
+
+// Updating nav link color
+anchors.forEach(anchor => anchor.style.color = "green");
+
+// Adding new anchor tags
+for(let i = 0; i < 2; i++) {
+    const newAnchor = document.createElement('a');
+    const nav = document.querySelector('nav');
+
+    newAnchor.style.color = "green";
+    newAnchor.id = `new-anchor-${i}`;
+    newAnchor.href = '#';
+    newAnchor.text = `New Anchor ${i}`;
+
+    if (i == 0)
+        nav.appendChild(newAnchor);
+    else
+        nav.prepend(newAnchor);
+}
+
+
+// Adding cta section
+const ctaH1 = document.querySelector('h1');
+const ctaButton = document.querySelector('button');
+
+ctaH1.textContent = siteContent.cta.h1;
+ctaH1.style.wordSpacing = '500px';
+ctaButton.textContent = siteContent.cta.button;
+
+
+// Adding main content - h4
+const mainContentH4 = document.querySelectorAll('h4');
+const mainContentH4Data =
+    Object.entries(siteContent["main-content"])
+    .filter(item => item[0].match(/h4/));
+
+addDataToElement(mainContentH4, mainContentH4Data);
+
+
+// Adding main content - content
+const mainContentContent = document.querySelectorAll('p');
+const mainContentContentData =
+    Object.entries(siteContent["main-content"])
+    .filter(item => item[0].match(/content/));
+
+addDataToElement(mainContentContent, mainContentContentData);
+
+
+// Adding contact section
+const contactFields = document.querySelector('.contact').children;
+const contactData = Object.entries(siteContent.contact);
+
+addDataToElement(contactFields, contactData);
+
+const footerFields = document.querySelector('footer').children;
+const footerData = Object.entries(siteContent.footer);
+
+addDataToElement(footerFields, footerData);
